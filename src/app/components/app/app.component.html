@@ -1,0 +1,19 @@
+<form [formGroup]="form">
+  <div>
+    Email
+  <input type="text" formControlName="email">
+    <div *ngIf="form.controls.email.invalid">Email is required</div>
+
+  </div>
+  <div>
+    Password
+  <input type="password" formControlName="password" placeholder="Enter your password">
+    <div *ngIf="form.controls.password.hasError('Less')">паролю не хватает {{5-form.controls.password.value.length}} символов</div>
+
+  </div>
+  <div>
+    <input type="password" formControlName="confirmPassword">
+  </div>
+  <div *ngIf="form.hasError('passwordError') && form.controls.confirmPassword.touched">Password not match</div>
+  <button (click)="save(form)" [disabled]="">save</button>
+</form>
